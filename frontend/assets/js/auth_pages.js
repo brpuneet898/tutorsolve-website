@@ -1,5 +1,8 @@
 function saveUserSession(user) {
-  sessionStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("user", JSON.stringify(user));
+  if (user.token) {
+    localStorage.setItem("token", user.token);
+  }
 }
 
 function getPendingQuestion() {
@@ -11,5 +14,9 @@ function redirectAfterAuth(role) {
     window.location.href = "/dashboards/student/index.html";
   } else if (role === "expert") {
     window.location.href = "/dashboards/expert/index.html";
+  } else if (role === "admin") {
+    window.location.href = "/dashboards/admin/cockpit.html";
+  } else if (role === "EmployeeAdmin") {
+    window.location.href = "/dashboards/employee_admin/index.html";
   }
 }
